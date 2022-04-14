@@ -8,8 +8,9 @@ description: elementary cli pomodoro timer
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+//#include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 typedef enum type_of_period_tt {
     TP_WORK,
@@ -18,7 +19,7 @@ typedef enum type_of_period_tt {
     TP_END_OF_CYCLE,
 } type_of_period_t;
 
-typedef struct my_time_period_table_my_tt {
+typedef struct time_period_table_my_tt {
   type_of_period_t curr_period_type;
   unsigned curr_period_time;
   unsigned work_nr;
@@ -37,7 +38,7 @@ int main(int argc, char **argv){
   time_period_table_cfg_t period_table_cfg;
   bool end_of_pomodoro = false;
   char odp = 't';
-  time_t time_stamp1;
+  //time_t time_stamp1;
   period_table_cfg.work_time = 20; //min
   period_table_cfg.short_pause_time = 5;  //min
   period_table_cfg.long_pause_time = 25; //min
@@ -50,10 +51,12 @@ int main(int argc, char **argv){
 
     while(period_table_my.curr_period_type != TP_END_OF_CYCLE){
 
+      /*
       if(        
         period_table_my.curr_period_time < 
         (unsigned)( difftime(time(NULL), time_stamp1) / 60 )
       ){
+      */
 
         switch(period_table_my.curr_period_type){
           case TP_WORK:
@@ -62,12 +65,14 @@ int main(int argc, char **argv){
                 period_table_cfg.long_pause_time;
               period_table_my.curr_period_type = TP_LONG_PAUSE;
               printf("%s\n"," ***** Take a LONG BREAK *** \a\a\a");
+              sleep(period_table_cfg.long_pause_time * 60);
             }
             else{
               period_table_my.curr_period_time = 
                 period_table_cfg.short_pause_time;
               period_table_my.curr_period_type = TP_SHORT_PAUSE;
               printf("%s\n"," ***** Take a short break ***\a");
+              sleep(period_table_cfg.short_pause_time * 60);
             }
             break;
             
@@ -79,6 +84,7 @@ int main(int argc, char **argv){
             printf("%s%d\n",
               " ***** TIME TO WORK ****** ", 
               period_table_my.work_nr);
+            sleep(period_table_cfg.work_time * 60);
             break;
 
           case TP_LONG_PAUSE:
@@ -87,10 +93,14 @@ int main(int argc, char **argv){
           case TP_END_OF_CYCLE:
             printf("%s\n", "program logic error");
             break;
-        }
+        }//switch
+    
+      /*
         time_stamp1 = time(NULL);
-      }
-    }  
+      }//if 
+      */
+    
+    }//while  
     printf("%s\n","Do you want to continue ? (t/n) [ENTER]");
     
     do{      
