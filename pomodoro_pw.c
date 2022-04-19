@@ -10,6 +10,7 @@ description: elementary cli pomodoro timer
 #include <stdlib.h>
 //#include <time.h>
 #include <stdbool.h>
+#include <string.h>
 #include <unistd.h>
 
 typedef enum type_of_period_tt {
@@ -32,17 +33,60 @@ typedef struct time_period_table_cfg_tt {
   unsigned long_pause_time;
 } time_period_table_cfg_t;
 
+int main(int argc, char **argv){  
 
-int main(int argc, char **argv){
   time_period_table_my_t period_table_my;
   time_period_table_cfg_t period_table_cfg;
   bool end_of_pomodoro = false;
   char odp = 't';
+  int arg = 0;
+  char *cli_help_switch = "--help";
   //time_t time_stamp1;
-  period_table_cfg.work_time = 20; //min
-  period_table_cfg.short_pause_time = 5;  //min
-  period_table_cfg.long_pause_time = 25; //min
-  period_table_cfg.work_nr = 4;
+  
+  if(argc > 1){
+    if( ! strncmp(argv[1], cli_help_switch, strlen(cli_help_switch))){
+      printf( 
+        "\n"
+        "usage: %s   work_time   short_break_time  long_break_time  number"
+        "\n\n", 
+        argv[0]);
+      return 0;
+    }
+    if( (arg = atoi(argv[1])) > 0 && arg < 120 )
+      period_table_cfg.work_time = (unsigned)arg; //min    
+    else 
+      period_table_cfg.work_time = 20; //min
+  }
+  if(argc > 2){
+    if( (arg = atoi(argv[2])) > 0 && arg < 120 )
+      period_table_cfg.short_pause_time = (unsigned)arg;  //min    
+    else
+      period_table_cfg.short_pause_time = 5;  //min
+  }
+  if(argc > 3){
+    if( (arg = atoi(argv[3])) > 0 && arg < 120 )
+      period_table_cfg.long_pause_time = (unsigned)arg; //min    
+    else 
+      period_table_cfg.long_pause_time = 15; //min
+  }
+  if(argc > 4){
+    if( (arg = atoi(argv[4])) > 0 && (unsigned)arg < 10 )
+      period_table_cfg.work_nr = (unsigned)arg;
+    else
+      period_table_cfg.work_nr = 4;
+  }
+
+  printf(
+  "work time:        %d min\n"
+  "short pause time: %d min\n"
+  "long pause time:  %d min\n"
+  "cycles number:    %d times"
+  "\n\n",
+    period_table_cfg.work_time,
+    period_table_cfg.short_pause_time,
+    period_table_cfg.long_pause_time,
+    period_table_cfg.work_nr
+  );
 
   do { //main loop
   
@@ -64,14 +108,16 @@ int main(int argc, char **argv){
               period_table_my.curr_period_time = 
                 period_table_cfg.long_pause_time;
               period_table_my.curr_period_type = TP_LONG_PAUSE;
-              printf("%s\n"," ***** Take a LONG BREAK *** \a\a\a");
+              printf("%s\n",
+                " ____ Take a LONG BREAK ____ \a\a\a");
               sleep(period_table_cfg.long_pause_time * 60);
             }
             else{
               period_table_my.curr_period_time = 
                 period_table_cfg.short_pause_time;
               period_table_my.curr_period_type = TP_SHORT_PAUSE;
-              printf("%s\n"," ***** Take a short break ***\a");
+              printf("%s\n",
+                " ---- Take a short break ----\a");
               sleep(period_table_cfg.short_pause_time * 60);
             }
             break;
@@ -82,7 +128,7 @@ int main(int argc, char **argv){
             period_table_my.curr_period_type = TP_WORK;
             period_table_my.work_nr++;
             printf("%s%d\n",
-              " ***** TIME TO WORK ****** ", 
+              " ****  TIME TO WORK  ***** ", 
               period_table_my.work_nr);
             sleep(period_table_cfg.work_time * 60);
             break;
