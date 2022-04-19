@@ -33,13 +33,18 @@ typedef struct time_period_table_cfg_tt {
   unsigned long_pause_time;
 } time_period_table_cfg_t;
 
+#define DEFAULT_WORK_TIME (25)
+#define DEFAULT_SHORT_TIME (5)
+#define DEFAULT_LONG_TIME (15)
+#define DEFAULT_WORK_NR (4)
+
 int main(int argc, char **argv){  
 
   time_period_table_my_t period_table_my;
   time_period_table_cfg_t period_table_cfg;
   bool end_of_pomodoro = false;
   char odp = 't';
-  int arg = 0;
+  unsigned long arg = 0;
   char *cli_help_switch = "--help";
   //time_t time_stamp1;
   
@@ -52,35 +57,50 @@ int main(int argc, char **argv){
         argv[0]);
       return 0;
     }
-    if( (arg = atoi(argv[1])) > 0 && arg < 120 )
-      period_table_cfg.work_time = (unsigned)arg; //min    
-    else 
-      period_table_cfg.work_time = 20; //min
+    arg = atoi(argv[1]);
+    if(!( arg  > 0 && arg < 120 ))
+      arg = DEFAULT_WORK_TIME;          
+    period_table_cfg.work_time = (unsigned)arg; 
   }
+  else
+    period_table_cfg.work_time = DEFAULT_WORK_TIME; 
+
   if(argc > 2){
-    if( (arg = atoi(argv[2])) > 0 && arg < 120 )
-      period_table_cfg.short_pause_time = (unsigned)arg;  //min    
-    else
-      period_table_cfg.short_pause_time = 5;  //min
+    arg = atoi(argv[2]);
+    if(!( arg > 0 && arg < 120 ))
+      arg = DEFAULT_SHORT_TIME;
+    period_table_cfg.short_pause_time = (unsigned)arg; 
   }
+  else
+    period_table_cfg.short_pause_time = DEFAULT_SHORT_TIME; 
+
+
+
   if(argc > 3){
-    if( (arg = atoi(argv[3])) > 0 && arg < 120 )
-      period_table_cfg.long_pause_time = (unsigned)arg; //min    
-    else 
-      period_table_cfg.long_pause_time = 15; //min
+    arg = atoi(argv[3]);
+    if(!( arg > 0 && arg < 120 ))      
+      arg = DEFAULT_LONG_TIME;
+    period_table_cfg.long_pause_time = (unsigned)arg;
   }
+  else
+    period_table_cfg.long_pause_time = DEFAULT_LONG_TIME;
+
+
   if(argc > 4){
-    if( (arg = atoi(argv[4])) > 0 && (unsigned)arg < 10 )
-      period_table_cfg.work_nr = (unsigned)arg;
-    else
-      period_table_cfg.work_nr = 4;
+    arg = atoi(argv[4]);
+    if(!( arg > 0 && arg < 10 ))
+      arg = DEFAULT_WORK_NR;    
+    period_table_cfg.work_nr = (unsigned)arg;
   }
+  else
+    period_table_cfg.work_nr = DEFAULT_WORK_NR;
+
 
   printf(
-  "work time:        %d min\n"
-  "short pause time: %d min\n"
-  "long pause time:  %d min\n"
-  "cycles number:    %d times"
+  "work time:        %u min\n"
+  "short pause time: %u min\n"
+  "long pause time:  %u min\n"
+  "cycles number:    %u times"
   "\n\n",
     period_table_cfg.work_time,
     period_table_cfg.short_pause_time,
