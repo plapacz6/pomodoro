@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>270</width>
+    <height>333</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>pomodoro</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>251</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>settings</string>
+    </property>
+    <widget class="QSpinBox" name="spinBox_sessionTime">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>30</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_shortBreakTime">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>80</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_longBreakTime">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>130</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_NumberOfSessions">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>180</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_okSettings">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>230</y>
+       <width>89</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ok</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_cancelSettings">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>230</y>
+       <width>89</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>cancel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_sessionTime">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>141</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>session</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_shortBreakTime">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>90</y>
+       <width>141</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>short break</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_longBreakTime">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>140</y>
+       <width>141</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>long break</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_numberOfSessions">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>141</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>number of session</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>270</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menupomodoro">
+    <property name="title">
+     <string>pomodoro</string>
+    </property>
+   </widget>
+   <addaction name="menupomodoro"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
