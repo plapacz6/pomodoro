@@ -1,5 +1,5 @@
 #include <catch2/catch_all.hpp>
-#include "lib_pomodoro.h" 
+#include "pomodoro_en/pomodoro_en.h" 
 
 TEST_CASE("initial") {
     REQUIRE(1 == 1);
