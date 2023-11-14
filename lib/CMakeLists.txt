@@ -1,15 +1,17 @@
 cmake_minimum_required(VERSION 3.17)
 project(pomodoro_en VERSION 0.0.1 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 list(APPEND lib_pomodoro_en_objects
-    Tpomodoro
+    Tpomodoro_cfg
+    Tpomodoro    
     # cfg_obj
     # read_cfg
 )
 
 add_library(Tpomodoro OBJECT src/Tpomodoro.cpp)
+add_library(Tpomodoro_cfg OBJECT src/Tpomodoro_cfg.cpp)
 # add_library(cfg_obj OBJECT src/cfg_obj.cpp)
 # add_library(read_cfg OBJECT src/read_cfg.cpp)
 
@@ -25,6 +27,7 @@ foreach(my_obj IN LISTS lib_pomodoro_en_objects)
 endforeach()
 
 add_library(${PROJECT_NAME} SHARED 
+    $<TARGET_OBJECTS:Tpomodoro_cfg> 
     $<TARGET_OBJECTS:Tpomodoro> 
     # $<TARGET_OBJECTS:cfg_obj> 
     # $<TARGET_OBJECTS:read_cfg>
@@ -32,6 +35,7 @@ add_library(${PROJECT_NAME} SHARED
 
 install(
     FILES include/${PROJECT_NAME}/${PROJECT_NAME}.h 
+    #FILES include/${PROJECT_NAME}/Tpomodoro.h 
     DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}
 )
 install(
