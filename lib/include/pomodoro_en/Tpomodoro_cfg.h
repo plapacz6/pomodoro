@@ -17,9 +17,9 @@ public:
     void write_cfg(const std::string& cfg_fname_);
     void read_cfg(const std::string& cfg_fname_);
 
-    Tpomodoro_cfg();
-    ~Tpomodoro_cfg();
-    Tpomodoro_cfg(const Tpomodoro_cfg& orig);
+    // Tpomodoro_cfg();
+    // ~Tpomodoro_cfg();
+    // Tpomodoro_cfg(const Tpomodoro_cfg& orig);
 private:
 };
 

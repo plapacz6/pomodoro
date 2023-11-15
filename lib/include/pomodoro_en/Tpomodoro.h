@@ -17,6 +17,8 @@ public:
     // void pause()
     // void reset()
     // void register_monitoring_callback(void (*monitoring_callback_)(int))
+    // void set_cfg(int, int, int, int);
+    // void save_cfg();
 
     Tpomodoro(const char* user_home_dir_sz);
     ~Tpomodoro();
@@ -25,7 +27,7 @@ private:
     std::string cfg_fname;
     Tpomodoro_cfg pomodoro_cfg;
     Tpomodoro_state pomodoro_state;
-    //void (*monitoring_callback_)(int);
+    //void (*monitoring_callback)(int);
 
     friend const std::string get_Tpomodoro_cfg_fname(const Tpomodoro* ptr_pom);
     friend Tpomodoro_state get_Tpomodoro_state(const Tpomodoro* ptr_pom);
