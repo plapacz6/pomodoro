@@ -20,4 +20,4 @@ TEST_CASE("pomodoro obj creation") {
     }    
 };
 
-
+  //REQUIRE(ptr_pomodoro_state->monitor_callback == ???)

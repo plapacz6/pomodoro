@@ -5,15 +5,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 list(APPEND lib_pomodoro_en_objects
     Tpomodoro_cfg
-    Tpomodoro    
-    # cfg_obj
-    # read_cfg
+    Tpomodoro_state
+    Tpomodoro        
 )
 
-add_library(Tpomodoro OBJECT src/Tpomodoro.cpp)
 add_library(Tpomodoro_cfg OBJECT src/Tpomodoro_cfg.cpp)
-# add_library(cfg_obj OBJECT src/cfg_obj.cpp)
-# add_library(read_cfg OBJECT src/read_cfg.cpp)
+add_library(Tpomodoro_state OBJECT src/Tpomodoro_state.cpp)
+add_library(Tpomodoro OBJECT src/Tpomodoro.cpp)
 
 foreach(my_obj IN LISTS lib_pomodoro_en_objects)
     message(${my_obj})
@@ -28,9 +26,8 @@ endforeach()
 
 add_library(${PROJECT_NAME} SHARED 
     $<TARGET_OBJECTS:Tpomodoro_cfg> 
+    $<TARGET_OBJECTS:Tpomodoro_state> 
     $<TARGET_OBJECTS:Tpomodoro> 
-    # $<TARGET_OBJECTS:cfg_obj> 
-    # $<TARGET_OBJECTS:read_cfg>
 )
 
 install(
