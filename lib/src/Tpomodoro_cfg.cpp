@@ -1,8 +1,9 @@
 #include "pomodoro_en/Tpomodoro_cfg.h"
 #include <iostream>
 #include <fstream>
+
 using namespace std;
-using namespace namespace_plapacz6;
+namespace namespace_plapacz6 {
 
 Tpomodoro_cfg::Tpomodoro_cfg() {
 
@@ -10,6 +11,13 @@ Tpomodoro_cfg::Tpomodoro_cfg() {
 
 Tpomodoro_cfg::~Tpomodoro_cfg() {
 
+}
+
+Tpomodoro_cfg::Tpomodoro_cfg(const Tpomodoro_cfg& orig) {
+    sessions_number = orig.sessions_number;
+    session_time = orig.session_time;
+    short_break_time = orig.short_break_time;
+    long_break_time = orig.long_break_time;
 }
 
 void Tpomodoro_cfg::set_default_parameters() {
@@ -36,6 +44,7 @@ void Tpomodoro_cfg::write_cfg(const std::string& cfg_fname_) {
         }
     }
 }
+
 void Tpomodoro_cfg::read_cfg(const std::string& cfg_fname_) {
     if(cfg_fname_ != "") {
         ifstream fin;
@@ -54,3 +63,5 @@ void Tpomodoro_cfg::read_cfg(const std::string& cfg_fname_) {
         }
     }
 }
+
+}  //namespace namespace_plapacz6 {

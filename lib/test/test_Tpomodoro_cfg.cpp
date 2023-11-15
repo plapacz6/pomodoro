@@ -5,7 +5,7 @@ using namespace std;
 
 TEST_CASE("Tpomodoro_cfg") {
     namespace_plapacz6::Tpomodoro_cfg *ptr_pomodoro_cfg = new namespace_plapacz6::Tpomodoro_cfg;
-    
+
     SECTION("create object, set default parameters") {
         REQUIRE(ptr_pomodoro_cfg != nullptr);
         ptr_pomodoro_cfg->set_default_parameters();
@@ -48,5 +48,3 @@ TEST_CASE("Tpomodoro_cfg") {
         delete ptr_pomodoro_cfg;
     }
 };
-
-
