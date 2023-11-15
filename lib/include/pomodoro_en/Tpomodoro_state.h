@@ -1,5 +1,7 @@
-#ifndef POMODORO_STATE_H
-#define POMODORO_STATE_H
+#ifndef TPOMODORO_STATE_H
+#define TPOMODORO_STATE_H
+
+#include "pomodoro_en/tests_helper_functions.h"
 
 namespace namespace_plapacz6 {
     struct Tpomodoro_state {
@@ -13,4 +15,4 @@ namespace namespace_plapacz6 {
     }; 
 }
 
-#endif // POMODORO_STATE_H
+#endif // TPOMODORO_STATE_H

@@ -4,13 +4,15 @@
 using namespace std;
 using namespace namespace_plapacz6;
 
-Tpomodoro_cfg::Tpomodoro_cfg(){
+Tpomodoro_cfg::Tpomodoro_cfg() {
 
 }
-Tpomodoro_cfg::~Tpomodoro_cfg(){
+
+Tpomodoro_cfg::~Tpomodoro_cfg() {
 
 }
-void Tpomodoro_cfg::set_default_parameters(){
+
+void Tpomodoro_cfg::set_default_parameters() {
     sessions_number = 4;
     session_time = 25;
     short_break_time = 5;
@@ -32,7 +34,7 @@ void Tpomodoro_cfg::write_cfg(const std::string& cfg_fname_) {
         else {
             cerr << "I can't write paramters to .pomodoro.config file\n";
         }
-    }        
+    }
 }
 void Tpomodoro_cfg::read_cfg(const std::string& cfg_fname_) {
     if(cfg_fname_ != "") {
@@ -40,7 +42,7 @@ void Tpomodoro_cfg::read_cfg(const std::string& cfg_fname_) {
         fin.open(cfg_fname_, ios_base::in);
         string description;
         if(fin.is_open()) {
-            fin >> sessions_number >> description;            
+            fin >> sessions_number >> description;
             fin >> session_time >> description;
             fin >> short_break_time >> description;
             fin >> long_break_time >> description;

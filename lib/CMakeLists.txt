@@ -6,12 +6,14 @@ set(CMAKE_CXX_STANDARD 17)
 list(APPEND lib_pomodoro_en_objects
     Tpomodoro_cfg
     Tpomodoro_state
-    Tpomodoro        
+    Tpomodoro   
+    tests_helper_functions     
 )
 
 add_library(Tpomodoro_cfg OBJECT src/Tpomodoro_cfg.cpp)
 add_library(Tpomodoro_state OBJECT src/Tpomodoro_state.cpp)
 add_library(Tpomodoro OBJECT src/Tpomodoro.cpp)
+add_library(tests_helper_functions OBJECT src/tests_helper_functions.cpp)
 
 foreach(my_obj IN LISTS lib_pomodoro_en_objects)
     message(${my_obj})
