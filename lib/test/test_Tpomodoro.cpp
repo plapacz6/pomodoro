@@ -33,10 +33,23 @@ TEST_CASE("Tpomodoro") {
         REQUIRE(pom_state.stage == namespace_plapacz6::Tpomodoro_state::BEFORE_START);
         REQUIRE(pom_state.stage_time == 0);
 
+        pom_obj->set_cfg(6, 30, 4, 20);
+        pom_obj->save_cfg();
+
     }
 
     SECTION("pomodoro obj not first time creation") {
+        
+        namespace_plapacz6::Tpomodoro_cfg pom_cfg = get_Tpomodoro_cfg(pom_obj);
+        REQUIRE(pom_cfg.sessions_number == (int)6);
+        REQUIRE(pom_cfg.session_time == (int)30);
+        REQUIRE(pom_cfg.short_break_time == (int)4);
+        REQUIRE(pom_cfg.long_break_time == (int)20);
 
+        namespace_plapacz6::Tpomodoro_state pom_state = get_Tpomodoro_state(pom_obj);
+        REQUIRE(pom_state.number_finished_sessions == 0);
+        REQUIRE(pom_state.stage == namespace_plapacz6::Tpomodoro_state::BEFORE_START);
+        REQUIRE(pom_state.stage_time == 0);
     }
 
     SECTION("register monitoring callback") {

@@ -17,9 +17,9 @@ public:
     // void pause()
     // void reset()
     // void register_monitoring_callback(void (*monitoring_callback_)(int))
-    // void set_cfg(int, int, int, int);
-    // void save_cfg();
-
+    void set_cfg(int sn, int st, int sbt, int lbt);
+    void save_cfg();
+    
     Tpomodoro(const char* user_home_dir_sz);
     ~Tpomodoro();
 

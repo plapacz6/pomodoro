@@ -51,8 +51,12 @@ void Tpomodoro::register_monitoring_callback(void (*monitoring_callback_)(int));
 /**
  * @brief set new configuration according to parameters
  * 
+ * @param sn  sessions number
+ * @param st  session time
+ * @param sbt short break time
+ * @param lbt long break time
  */
-void Tpomodoro::set_cfg(int, int, int, int);
+void Tpomodoro::set_cfg(int sn, int st, int sbt, int lbt);
 
 /**
  * @brief save current configuration to $HOME/.pomodoro.config file

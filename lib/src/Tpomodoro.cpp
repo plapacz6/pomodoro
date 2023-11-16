@@ -28,4 +28,17 @@ Tpomodoro::~Tpomodoro() {
     }
 }
 
+
+void Tpomodoro::set_cfg(int sn, int st, int sbt, int lbt) {
+    pomodoro_cfg.sessions_number = sn;
+    pomodoro_cfg.session_time = st;
+    pomodoro_cfg.short_break_time = sbt;
+    pomodoro_cfg.long_break_time = lbt;
+}
+
+
+void Tpomodoro::save_cfg() {
+    pomodoro_cfg.write_cfg(cfg_fname);
+}
+
 } //namespace namespace_plapacz6 {
