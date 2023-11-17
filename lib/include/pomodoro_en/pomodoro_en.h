@@ -1,8 +1,11 @@
 #ifndef POMODORO_EN_POMODORO_EN_H
 #define POMODORO_EN_POMODORO_EN_H
 
-namespace namespace_plapacz6 {
+#include "pomodoro_en/Tpomodoro_stage.h"
+#include "pomodoro_en/Tmonitoring_callback.h"
 
+namespace namespace_plapacz6 {
+    
 /**
  * @brief class implementing pomodoro process
 */
@@ -46,7 +49,7 @@ void Tpomodoro::reset();
  * 
  * @param monitoring_callback_ 
  */
-void Tpomodoro::register_monitoring_callback(void (*monitoring_callback_)(int));
+void Tpomodoro::register_monitoring_callback(Tmonitoring_callback_fn monitoring_callback_);
 
 /**
  * @brief set new configuration according to parameters

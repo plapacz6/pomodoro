@@ -5,21 +5,6 @@
 using namespace std;
 namespace namespace_plapacz6 {
 
-// Tpomodoro_cfg::Tpomodoro_cfg() {
-
-// }
-
-// Tpomodoro_cfg::~Tpomodoro_cfg() {
-
-// }
-
-// Tpomodoro_cfg::Tpomodoro_cfg(const Tpomodoro_cfg& orig) {
-//     sessions_number = orig.sessions_number;
-//     session_time = orig.session_time;
-//     short_break_time = orig.short_break_time;
-//     long_break_time = orig.long_break_time;
-// }
-
 void Tpomodoro_cfg::set_default_parameters() {
     sessions_number = 4;
     session_time = 25;

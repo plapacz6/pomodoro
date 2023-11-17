@@ -1,5 +1,6 @@
 #include "pomodoro_en/Tpomodoro.h"
 
+#include <cassert>
 #include <iostream>
 #include <filesystem>
 
@@ -39,6 +40,11 @@ void Tpomodoro::set_cfg(int sn, int st, int sbt, int lbt) {
 
 void Tpomodoro::save_cfg() {
     pomodoro_cfg.write_cfg(cfg_fname);
+}
+
+void Tpomodoro::register_monitoring_callback(Tmonitoring_callback_fn monitoring_callback_){
+    monitoring_callback = monitoring_callback_;
+    assert(monitoring_callback == monitoring_callback_);
 }
 
 } //namespace namespace_plapacz6 {

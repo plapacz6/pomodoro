@@ -39,8 +39,10 @@ add_library(${PROJECT_NAME} SHARED
 )
 
 install(
-    FILES include/${PROJECT_NAME}/${PROJECT_NAME}.h 
-    #FILES include/${PROJECT_NAME}/Tpomodoro.h 
+    FILES 
+        include/${PROJECT_NAME}/${PROJECT_NAME}.h 
+        include/${PROJECT_NAME}/Tpomodoro_stage.h
+        include/${PROJECT_NAME}/Tmonitoring_callback.h    
     DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}
 )
 install(

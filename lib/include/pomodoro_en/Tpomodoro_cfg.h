@@ -7,6 +7,7 @@
 namespace namespace_plapacz6 {
 
 class Tpomodoro_cfg {
+    
 public:
     int sessions_number;
     int session_time;
@@ -17,9 +18,6 @@ public:
     void write_cfg(const std::string& cfg_fname_);
     void read_cfg(const std::string& cfg_fname_);
 
-    // Tpomodoro_cfg();
-    // ~Tpomodoro_cfg();
-    // Tpomodoro_cfg(const Tpomodoro_cfg& orig);
 private:
 };
 
