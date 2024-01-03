@@ -2,9 +2,10 @@
 #include "pomodoro_en/Tpomodoro_cfg.h"
 #include <filesystem>
 using namespace std;
+using namespace namespace_plapacz6;
 
 TEST_CASE("Tpomodoro_cfg") {
-    namespace_plapacz6::Tpomodoro_cfg *ptr_pomodoro_cfg = new namespace_plapacz6::Tpomodoro_cfg;
+    Tpomodoro_cfg *ptr_pomodoro_cfg = new Tpomodoro_cfg;
 
     SECTION("create object, set default parameters") {
         REQUIRE(ptr_pomodoro_cfg != nullptr);
@@ -20,7 +21,7 @@ TEST_CASE("Tpomodoro_cfg") {
         filesystem::path cfg_fname = getenv("HOME");
         cfg_fname /= ".pomodoro.config";
 
-        namespace_plapacz6::Tpomodoro_cfg *ptr_pomodoro_cfg = new namespace_plapacz6::Tpomodoro_cfg;
+        Tpomodoro_cfg *ptr_pomodoro_cfg = new Tpomodoro_cfg;
 
         REQUIRE(ptr_pomodoro_cfg != nullptr);
         ptr_pomodoro_cfg->set_default_parameters();
