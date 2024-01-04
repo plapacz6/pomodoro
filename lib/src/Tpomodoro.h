@@ -3,11 +3,11 @@
 
 #include <string>
 
-#include "pomodoro_en/tests_helper_functions.h"
-#include "pomodoro_en/Tpomodoro_stage.h"
-#include "pomodoro_en/Tmonitoring_callback.h"
-#include "pomodoro_en/Tpomodoro_cfg.h"
-#include "pomodoro_en/Tpomodoro_state.h"
+#include "tests_helper_functions.h"
+#include "Tpomodoro_stage.h"
+#include "Tmonitoring_callback.h"
+#include "Tpomodoro_cfg.h"
+#include "Tpomodoro_state.h"
 
 namespace namespace_plapacz6 {
 
@@ -32,10 +32,11 @@ private:
     Tpomodoro_state pomodoro_state;    
     Tmonitoring_callback_fn monitoring_callback;
 
-    friend const std::string get_Tpomodoro_cfg_fname(const Tpomodoro* ptr_pom);
-    friend Tmonitoring_callback_fn get_Tpomodoro_monitoring_callback(Tpomodoro *ptr_pom);
-    friend Tpomodoro_state get_Tpomodoro_state(const Tpomodoro* ptr_pom);
-    friend Tpomodoro_cfg get_Tpomodoro_cfg(const Tpomodoro* ptr_pom);
+    friend class Tpomodoro_test_helper;
+    // friend const std::string get_cfg_fname(const Tpomodoro* ptr_pom);
+    // friend Tmonitoring_callback_fn get_monitoring_callback(Tpomodoro *ptr_pom);
+    // friend Tpomodoro_state get_state(const Tpomodoro* ptr_pom);
+    // friend Tpomodoro_cfg get_cfg(const Tpomodoro* ptr_pom);
 };
 
 } //namespace namespace_plapacz6 {

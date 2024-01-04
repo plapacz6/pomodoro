@@ -2,7 +2,7 @@
 #define TPOMODORO_CFG_H
 
 #include <string>
-#include "pomodoro_en/tests_helper_functions.h"
+#include "tests_helper_functions.h"
 
 namespace namespace_plapacz6 {
 

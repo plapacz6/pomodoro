@@ -1,8 +1,8 @@
 #ifndef TPOMODORO_STATE_H
 #define TPOMODORO_STATE_H
 
-#include "pomodoro_en/Tpomodoro_stage.h"
-#include "pomodoro_en/tests_helper_functions.h"
+#include "Tpomodoro_stage.h"
+#include "tests_helper_functions.h"
 
 namespace namespace_plapacz6 {
 

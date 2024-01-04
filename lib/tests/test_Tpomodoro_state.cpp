@@ -1,6 +1,6 @@
 #include <catch2/catch_all.hpp>
-#include "pomodoro_en/Tpomodoro_stage.h"
-#include "pomodoro_en/Tpomodoro_state.h"
+#include "Tpomodoro_stage.h"
+#include "Tpomodoro_state.h"
 
 using namespace std;
 using namespace namespace_plapacz6;

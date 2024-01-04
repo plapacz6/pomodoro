@@ -1,5 +1,5 @@
-#include "pomodoro_en/Tpomodoro_state.h"
-#include "pomodoro_en/Tpomodoro_stage.h"
+#include "Tpomodoro_state.h"
+#include "Tpomodoro_stage.h"
 
 namespace namespace_plapacz6 {
 

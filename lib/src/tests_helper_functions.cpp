@@ -1,27 +1,27 @@
-#include "pomodoro_en/tests_helper_functions.h"
-#include "pomodoro_en/Tpomodoro_stage.h"
-#include "pomodoro_en/Tmonitoring_callback.h"
-#include "pomodoro_en/Tpomodoro.h"
+#include "tests_helper_functions.h"
+#include "Tpomodoro_stage.h"
+#include "Tmonitoring_callback.h"
+#include "Tpomodoro.h"
 
 using namespace std;
 namespace namespace_plapacz6 {
 
-const std::string get_Tpomodoro_cfg_fname(const Tpomodoro* ptr_pom)
+const std::string Tpomodoro_test_helper::get_cfg_fname(const Tpomodoro* ptr_pom)
 {
     return ptr_pom->cfg_fname;
 }
 
-Tpomodoro_state get_Tpomodoro_state(const Tpomodoro* ptr_pom)
+Tpomodoro_state Tpomodoro_test_helper::get_state(const Tpomodoro* ptr_pom)
 {
     return ptr_pom->pomodoro_state;
 }
 
-Tpomodoro_cfg get_Tpomodoro_cfg(const Tpomodoro* ptr_pom)
+Tpomodoro_cfg Tpomodoro_test_helper::get_cfg(const Tpomodoro* ptr_pom)
 {
     return ptr_pom->pomodoro_cfg;
 }
 
-Tmonitoring_callback_fn get_Tpomodoro_monitoring_callback(Tpomodoro *ptr_pom)
+Tmonitoring_callback_fn Tpomodoro_test_helper::get_monitoring_callback(Tpomodoro *ptr_pom)
 {
 
     /*

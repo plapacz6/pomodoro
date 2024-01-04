@@ -1,5 +1,5 @@
 #include <catch2/catch_all.hpp>
-#include "pomodoro_en/Tpomodoro_cfg.h"
+#include "Tpomodoro_cfg.h"
 #include <filesystem>
 using namespace std;
 using namespace namespace_plapacz6;
