@@ -6,7 +6,8 @@ list(APPEND lib_pomodoro_en_objects
     Tpomodoro_cfg
     Tpomodoro_state
     Tpomodoro   
-    tests_helper_functions         
+    tests_helper_functions     
+    Tclock    
 )
 
 add_library(Tpomodoro_cfg OBJECT Tpomodoro_cfg.cpp)
@@ -15,6 +16,7 @@ add_library(Tpomodoro OBJECT Tpomodoro.cpp)
 
 #helper functions objects for tests only (not part of library)
 add_library(tests_helper_functions OBJECT tests_helper_functions.cpp)
+add_library(Tclock OBJECT Tclock.cpp)
 
 foreach(my_obj IN LISTS lib_pomodoro_en_objects)
     message(${my_obj})
@@ -26,7 +28,7 @@ foreach(my_obj IN LISTS lib_pomodoro_en_objects)
         # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/pomodoro_en>
         ../include
         ../include/pomodoro_en
-        ./
+        .
     )
     target_compile_options(${my_obj} PUBLIC -Wall -fPIC -g3)
     target_compile_definitions(${my_obj} PUBLIC $<$<CONFIG:DEBUG>:DEBUG>)

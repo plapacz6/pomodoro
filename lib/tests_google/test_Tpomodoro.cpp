@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <cstdlib>
 #include <filesystem>
-#include "Tpomodoro_stage.h"
+
 #include "Tmonitoring_callback.h"
 #include "Tpomodoro.h"
 
@@ -11,21 +11,21 @@ using namespace namespace_plapacz6;
 struct monitor_state {
     int pass_sec;
     int fin_ses;
-    Tpomodoro_stage monit_stage;
+    Tstage monit_stage;
 
     void reset() {
         pass_sec = 0;
         fin_ses = 0;
-        monit_stage = Tpomodoro_stage::BEFORE_START;
+        monit_stage = Tstage::BEFORE_START;
     }
-    void set(int s, int sn, Tpomodoro_stage ms) {
+    void set(int s, int sn, Tstage ms) {
         pass_sec = s;
         fin_ses = sn;
         monit_stage = ms;
     }
 } mon_st;
 
-void pomodoro_monitor(int sec, int fin_ses_nr, Tpomodoro_stage stage){
+void pomodoro_monitor(int sec, int fin_ses_nr, Tstage stage){
     mon_st.pass_sec = sec;
     mon_st.fin_ses = fin_ses_nr;
     mon_st.monit_stage = stage;
@@ -74,7 +74,7 @@ TEST_F(TestFixture_Test_Tpomodoro, pomodoro_obj_1_time_creation) {
     Tpomodoro_state pom_state = 
         ht.get_state(pom_obj);
     ASSERT_TRUE(pom_state.number_finished_sessions == 0);
-    ASSERT_TRUE(pom_state.stage == Tpomodoro_stage::BEFORE_START);
+    ASSERT_TRUE(pom_state.stage == Tstage::BEFORE_START);
     ASSERT_TRUE(pom_state.stage_time == 0);
 
     pom_obj->set_cfg(6, 30, 4, 20);
@@ -94,7 +94,7 @@ TEST_F(TestFixture_Test_Tpomodoro, pomodoro_obj_not_first_time_creation) {
     Tpomodoro_state pom_state = 
         ht.get_state(pom_obj);
     ASSERT_TRUE(pom_state.number_finished_sessions == 0);
-    ASSERT_TRUE(pom_state.stage == Tpomodoro_stage::BEFORE_START);
+    ASSERT_TRUE(pom_state.stage == Tstage::BEFORE_START);
     ASSERT_TRUE(pom_state.stage_time == 0);
 }
 

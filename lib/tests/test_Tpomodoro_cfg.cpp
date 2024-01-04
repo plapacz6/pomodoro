@@ -1,4 +1,5 @@
 #include <catch2/catch_all.hpp>
+
 #include "Tpomodoro_cfg.h"
 #include <filesystem>
 using namespace std;

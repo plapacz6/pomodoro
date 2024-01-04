@@ -1,5 +1,5 @@
 #include "tests_helper_functions.h"
-#include "Tpomodoro_stage.h"
+
 #include "Tmonitoring_callback.h"
 #include "Tpomodoro.h"
 
@@ -42,6 +42,10 @@ Tmonitoring_callback_fn Tpomodoro_test_helper::get_monitoring_callback(Tpomodoro
 
     // return mon_callb;
     return ptr_pom->monitoring_callback;
+}
+
+Tstage Tpomodoro_test_helper::get_stage(const Tpomodoro* ptr_pom) {
+    return ptr_pom->pomodoro_state.stage;
 }
 
 } //namespace namespace_plapacz6 {

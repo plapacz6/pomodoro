@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "Tpomodoro_stage.h"
+
 #include "Tpomodoro_state.h"
 
 using namespace std;
@@ -14,13 +14,13 @@ TEST(TestSuite_Tpomodoro_state, Test_Tpomodoro_state_create_reset) {
     //("create, reset()") 
 
     ptr_pomodoro_state->number_finished_sessions = 4;
-    ptr_pomodoro_state->stage = Tpomodoro_stage::AFTER_END;
+    ptr_pomodoro_state->stage = Tstage::AFTER_END;
     ptr_pomodoro_state->stage_time = 15;
 
     ptr_pomodoro_state->reset();
 
     ASSERT_TRUE(ptr_pomodoro_state->number_finished_sessions == 0);
-    ASSERT_TRUE(ptr_pomodoro_state->stage == Tpomodoro_stage::BEFORE_START);
+    ASSERT_TRUE(ptr_pomodoro_state->stage == Tstage::BEFORE_START);
     ASSERT_TRUE(ptr_pomodoro_state->stage_time == 0);
 
 

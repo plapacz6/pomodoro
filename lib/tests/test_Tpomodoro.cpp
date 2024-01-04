@@ -1,9 +1,10 @@
 #include <catch2/catch_all.hpp>
 #include <cstdlib>
 #include <filesystem>
-#include "Tpomodoro_stage.h"
+
 #include "Tmonitoring_callback.h"
 #include "Tpomodoro.h"
+#include "Tclock.h"
 
 using namespace std;
 using namespace namespace_plapacz6;
@@ -11,21 +12,21 @@ using namespace namespace_plapacz6;
 struct monitor_state {
     int pass_sec;
     int fin_ses;
-    Tpomodoro_stage monit_stage;
+    Tstage monit_stage;
 
     void reset() {
         pass_sec = 0;
         fin_ses = 0;
-        monit_stage = Tpomodoro_stage::BEFORE_START;
+        monit_stage = Tstage::BEFORE_START;
     }
-    void set(int s, int sn, Tpomodoro_stage ms) {
+    void set(int s, int sn, Tstage ms) {
         pass_sec = s;
         fin_ses = sn;
         monit_stage = ms;
     }
 } mon_st;
 
-void pomodoro_monitor(int sec, int fin_ses_nr, Tpomodoro_stage stage){
+void pomodoro_monitor(int sec, int fin_ses_nr, Tstage stage){
     mon_st.pass_sec = sec;
     mon_st.fin_ses = fin_ses_nr;
     mon_st.monit_stage = stage;
@@ -62,7 +63,7 @@ TEST_CASE("Tpomodoro") {
         Tpomodoro_state pom_state = 
             ht.get_state(pom_obj);
         REQUIRE(pom_state.number_finished_sessions == 0);
-        REQUIRE(pom_state.stage == Tpomodoro_stage::BEFORE_START);
+        REQUIRE(pom_state.stage == Tstage::BEFORE_START);
         REQUIRE(pom_state.stage_time == 0);
 
         pom_obj->set_cfg(6, 30, 4, 20);
@@ -82,7 +83,7 @@ TEST_CASE("Tpomodoro") {
         Tpomodoro_state pom_state = 
             ht.get_state(pom_obj);
         REQUIRE(pom_state.number_finished_sessions == 0);
-        REQUIRE(pom_state.stage == Tpomodoro_stage::BEFORE_START);
+        REQUIRE(pom_state.stage == Tstage::BEFORE_START);
         REQUIRE(pom_state.stage_time == 0);
     }
 
@@ -101,6 +102,21 @@ TEST_CASE("Tpomodoro") {
 
         //symulacja uplywu czasu (wewnatrz zykly licznik bez czekania na uplyw czasu)
         //wspolny zegar dla Tpomodoro i systemu testujacego
+        Tclock clock;
+        pom_obj->set_cfg(2, 1, 1, 1);           
+        mon_st.reset();    
+        pom_obj->register_monitoring_callback(ptr_pomodoro_monitor);
+        clock.reset();
+
+        REQUIRE(ht.get_stage(pom_obj) == Tstage::BEFORE_START);
+
+        for(unsigned t = 0; t < (1 + 1 + 1 + 1) * 60; ++t) {
+            pom_obj->run();
+            //sprawdzenie wyniku dzialania monitora
+
+            //
+            clock.step();
+        }
 
     }
 

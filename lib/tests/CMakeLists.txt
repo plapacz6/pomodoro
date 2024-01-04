@@ -27,6 +27,7 @@ target_link_libraries(test_Tpomodoro PRIVATE
     Tpomodoro
     Tpomodoro_cfg
     Tpomodoro_state
+    Tclock
     tests_helper_functions
     Catch2::Catch2WithMain
 )

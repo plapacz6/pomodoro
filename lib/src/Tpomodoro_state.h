@@ -1,7 +1,7 @@
 #ifndef TPOMODORO_STATE_H
 #define TPOMODORO_STATE_H
 
-#include "Tpomodoro_stage.h"
+#include "pomodoro_en.h"
 #include "tests_helper_functions.h"
 
 namespace namespace_plapacz6 {
@@ -9,7 +9,7 @@ namespace namespace_plapacz6 {
 struct Tpomodoro_state {
     
     int number_finished_sessions;
-    Tpomodoro_stage stage;
+    Tstage stage;
     int stage_time;
 
     void reset();

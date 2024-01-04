@@ -47,4 +47,8 @@ void Tpomodoro::register_monitoring_callback(Tmonitoring_callback_fn monitoring_
     assert(monitoring_callback == monitoring_callback_);
 }
 
+void Tpomodoro::run() {
+
+}
+
 } //namespace namespace_plapacz6 {

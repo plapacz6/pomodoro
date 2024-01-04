@@ -4,7 +4,7 @@
 #include <string>
 
 #include "tests_helper_functions.h"
-#include "Tpomodoro_stage.h"
+
 #include "Tmonitoring_callback.h"
 #include "Tpomodoro_cfg.h"
 #include "Tpomodoro_state.h"
@@ -16,7 +16,7 @@ namespace namespace_plapacz6 {
 class Tpomodoro {
 
 public:
-    // void run()
+    void run();
     // void pause()
     // void reset()
     void register_monitoring_callback(Tmonitoring_callback_fn monitoring_callback_);

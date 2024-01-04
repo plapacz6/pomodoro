@@ -1,5 +1,6 @@
 #include <catch2/catch_all.hpp>
-#include "Tpomodoro_stage.h"
+
+#include "pomodoro_en.h"
 #include "Tpomodoro_state.h"
 
 using namespace std;
@@ -14,13 +15,13 @@ TEST_CASE("Tpomodoro_state") {
     SECTION("create, reset()") {
 
         ptr_pomodoro_state->number_finished_sessions = 4;
-        ptr_pomodoro_state->stage = Tpomodoro_stage::AFTER_END;
+        ptr_pomodoro_state->stage = Tstage::AFTER_END;
         ptr_pomodoro_state->stage_time = 15;
 
         ptr_pomodoro_state->reset();
 
         REQUIRE(ptr_pomodoro_state->number_finished_sessions == 0);
-        REQUIRE(ptr_pomodoro_state->stage == Tpomodoro_stage::BEFORE_START);
+        REQUIRE(ptr_pomodoro_state->stage == Tstage::BEFORE_START);
         REQUIRE(ptr_pomodoro_state->stage_time == 0);
     }
 
